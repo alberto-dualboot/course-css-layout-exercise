@@ -47,6 +47,54 @@ nav a {
   padding: 0.5em 1em;
 }
 
+#burguer {
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  padding: 2px;  
+  position: relative;
+  margin-left: 15px;
+  padding: 5px 8px;
+  width: 26px;
+  height: 26px;
+  display: none;
+}
+
+#burguer div, #burguer div::before, #burguer div::after{
+  position: absolute;
+  width: 26px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 3px;
+  top: 25px;
+}
+#burguer div::before{
+  top: -9px;
+  content: '';
+  transition: transform 0.2s ease-in-out;
+}
+#burguer div::after{
+  top: -18px;
+  content: '';
+  transform-origin:   top top;
+  transition: transform 0.2s ease-in-out;
+}
+#burguer div{
+  transform-origin: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+#burguer[data-is-open="false"] div::before{
+  display: none;
+}
+#burguer[data-is-open="false"] div::after{
+  transform: rotate(80deg) translate(17px, 3px);
+}
+#burguer[data-is-open="false"] div{
+  transform: rotate(-40deg) translate(5px, -5px);
+  
+}
+
+
 .photos {
   list-style: none;
   margin: 0;
@@ -60,4 +108,23 @@ nav a {
   width: 200px;
   float: left;
   margin: 0 15px 15px 0;
+}
+
+
+@media screen and (max-width: 992px) {
+  .grid {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 980px;
+    display: block;
+  }
+}
+@media screen and (max-width: 768px) {
+  nav ul{
+    display: none;
+    transition: transform 0.4s ease-in-out;
+  }
+  #burguer{
+    display: block;
+  }
 }
